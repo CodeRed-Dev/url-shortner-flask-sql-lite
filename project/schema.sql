@@ -6,4 +6,3 @@ CREATE TABLE urls (
     original_url TEXT NOT NULL,
     clicks INTEGER NOT NULL DEFAULT 0
 );
-

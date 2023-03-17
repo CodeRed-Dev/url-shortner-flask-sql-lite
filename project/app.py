@@ -8,11 +8,11 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'this should be a secret random string'
 
 hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
+
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
@@ -38,6 +38,8 @@ def index():
 
     return render_template('index.html')
 
+
+
 @app.route('/<id>')
 def url_redirect(id):
     conn = get_db_connection()
@@ -60,6 +62,8 @@ def url_redirect(id):
     else:
         flash('Invalid URL')
         return redirect(url_for('index'))
+    
+
 
 @app.route('/stats')
 def stats():
